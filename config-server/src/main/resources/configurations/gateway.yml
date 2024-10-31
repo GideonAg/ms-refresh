@@ -1,0 +1,20 @@
+server:
+  port: 8222
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: students-service
+          uri: lb://students-service
+          predicates:
+            - Path=/api/v1/students
+
+        - id: products-service
+          uri: lb://products-service
+          predicates:
+            - Path=/api/v1/products
+
+        - id: order-service
+          uri: lb://order-service
+          predicates:
+            - Path=/api/v1/orders
